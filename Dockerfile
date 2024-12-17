@@ -29,14 +29,15 @@ RUN apt-get -y update && apt-get -y install \
 	zip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /root/workspace
+RUN mkdir -p /workspace
+RUN chmod 0777 /workspace
 WORKDIR /root
 
 COPY support .
 RUN ./build-toolchain.sh
-RUN cat ./setup-env.sh >> .bashrc
+RUN cat ./setup-env.sh >> /etc/bash.bashrc
 
-VOLUME /root/workspace
-WORKDIR /root/workspace
+VOLUME /workspace
+WORKDIR /workspace
 
 CMD ["/bin/bash"]

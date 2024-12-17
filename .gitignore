@@ -2,3 +2,4 @@
 .build
 workspace/*
 rg35xx-toolchain.tar.xz
+/build.log
